@@ -1,0 +1,9 @@
+.element__like {
+  min-width: 22px;
+  height: 19px;
+  background-image: url(../../../images/icons/disabledLike.svg);
+}
+
+.element__like:hover {
+  opacity: .5;
+}

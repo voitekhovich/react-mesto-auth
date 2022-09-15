@@ -1,0 +1,16 @@
+.elements {
+  list-style: none;
+  padding: 0;
+  margin: 51px 19px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 22px 17px;
+}
+
+@media screen and (max-width: 767px) {
+  .elements {
+    margin-top: 36px;
+    gap: 23px 17px;
+  }
+}

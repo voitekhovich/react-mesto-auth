@@ -1,0 +1,8 @@
+.body__button-hover {
+  cursor: pointer;
+  transition: opacity .2s;
+}
+
+.body__button-hover:hover {
+  opacity: .6;
+}

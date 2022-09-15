@@ -1,0 +1,7 @@
+.element__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color_black);
+  padding: 22px 20px 19px 21px;
+}

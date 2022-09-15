@@ -1,0 +1,6 @@
+.imagebox {
+  padding: 0;
+  width: auto;
+  background-color: transparent;
+  color: var(--color_white);
+}

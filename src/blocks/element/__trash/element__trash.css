@@ -1,0 +1,8 @@
+.element__trash {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  min-width: 18px;
+  height: 19px;
+  background-image: url(../../../images/icons/trashBtn.svg);
+}

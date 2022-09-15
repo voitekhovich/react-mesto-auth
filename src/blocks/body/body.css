@@ -1,0 +1,16 @@
+:root {
+  --color_black: #000;
+  --color_white: #fff;
+  --color_light_gray: #C4C4C4;
+  --color_gray: #545454;
+  --color_focus: rgb(38, 78, 255, .7);
+  --color_error: #ff0000;
+}
+
+.body {
+  background-color: var(--color_black);
+  font-family: Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color_white);
+}
