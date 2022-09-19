@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import Header from '../Header';
 import Main from '../Main';
 import Footer from '../Footer';
 import ImagePopup from '../ImagePopup';
@@ -109,7 +108,6 @@ export default function Cards() {
 
   return (
     <React.Fragment>
-      <Header />
       <CurrentUserContext.Provider value={currentUser}>
 
         {isLoading 

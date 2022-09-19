@@ -1,0 +1,15 @@
+.heading {
+  margin: 0 0 48px 0;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--color_black);
+}
+
+@media screen and (max-width: 767px) {
+  .heading {
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 74px;
+  }
+}

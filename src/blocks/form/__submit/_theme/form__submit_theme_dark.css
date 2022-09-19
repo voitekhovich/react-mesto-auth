@@ -1,0 +1,4 @@
+.form__submit_theme_dark {
+  color: var(--color_black);
+  background-color: var(--color_white);
+}

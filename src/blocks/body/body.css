@@ -7,6 +7,10 @@
   --color_error: #ff0000;
 }
 
+html, body {
+  height: 100%;
+}
+
 .body {
   background-color: var(--color_black);
   font-family: Inter, sans-serif;

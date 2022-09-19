@@ -1,0 +1,5 @@
+.form__input_theme_dark {
+  background-color: transparent;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 1);
+}

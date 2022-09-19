@@ -1,13 +1,21 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Cards from "./pages/Cards";
+import Header from "./Header";
+import SignUp from "./pages/SignUp";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Route path="/">
-        <Cards />
-      </Route>
-    </BrowserRouter>
+    <React.Fragment>
+      <Header />
+      <Switch>
+        <Route path="/">
+          <SignUp />
+        </Route>
+        <Route path="/">
+          <Cards />
+        </Route>
+      </Switch>
+    </React.Fragment>
   );
 }
