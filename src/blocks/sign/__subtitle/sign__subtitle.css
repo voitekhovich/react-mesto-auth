@@ -1,0 +1,15 @@
+.sign__subtitle {
+  margin: 15px auto 0;
+  font-family: "Inter";
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.sign__subtitle p {
+  margin: 0 auto;
+}
+
+.sign__subtitle a {
+  text-decoration: none;
+  color: var(--color_white);
+}

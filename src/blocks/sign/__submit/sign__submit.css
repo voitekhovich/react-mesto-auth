@@ -1,3 +1,10 @@
 .sign__submit {
-  margin-top: 0px;
+  margin-top: auto;
+  justify-self: flex-end;
+}
+
+@media screen and (max-width: 767px) {
+  .sign__submit {
+    margin-top: auto;
+  }
 }

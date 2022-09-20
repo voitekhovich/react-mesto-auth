@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import Cards from "./pages/Cards";
 import Header from "./Header";
-import SignUp from "./pages/SignUp";
+import ProtectedRoute from "./ProtectedRoute";
+import Login from "./Login";
+import Register from "./Register";
 
 export default function App() {
+  const [ loggedIn, setLoggedIn ] = useState(false);
+
   return (
     <React.Fragment>
       <Header />
       <Switch>
-        <Route path="/">
-          <SignUp />
+        <Route path="/signin">
+          <Login />
         </Route>
-        <Route path="/">
-          <Cards />
+        <Route path="/signup">
+          <Register />
         </Route>
+        <ProtectedRoute path="/" loggedIn={loggedIn} component={Cards} />
       </Switch>
     </React.Fragment>
   );

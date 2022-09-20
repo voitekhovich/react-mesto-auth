@@ -52,12 +52,6 @@
 @import url(./blocks/popup/__heading/_type/popup__heading_type_confirm.css);
 @import url(./blocks/popup/_image/popup_image.css);
 
-@import url(./blocks/sign/sign.css);
-@import url(./blocks/sign/__container/sign__container.css);
-@import url(./blocks/sign/__heading/sign__heading.css);
-@import url(./blocks/sign/__fieldset/sign__fieldset.css);
-@import url(./blocks/sign/__submit/sign__submit.css);
-
 @import url(./blocks/form/__fieldset/form__fieldset.css);
 @import url(./blocks/form/__field/form__field.css);
 @import url(./blocks/form/__input/form__input.css);
@@ -68,6 +62,13 @@
 @import url(./blocks/form/__submit/form__submit.css);
 @import url(./blocks/form/__submit/_inactive/form__submit_inactive.css);
 @import url(./blocks/form/__submit/_theme/form__submit_theme_dark.css);
+
+@import url(./blocks/sign/sign.css);
+@import url(./blocks/sign/__container/sign__container.css);
+@import url(./blocks/sign/__heading/sign__heading.css);
+@import url(./blocks/sign/__fieldset/sign__fieldset.css);
+@import url(./blocks/sign/__submit/sign__submit.css);
+@import url(./blocks/sign/__subtitle/sign__subtitle.css);
 
 @import url(./blocks/imagebox/imagebox.css);
 @import url(./blocks/imagebox/__container/imagebox__container.css);

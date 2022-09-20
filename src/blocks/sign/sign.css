@@ -1,8 +1,13 @@
 .sign {
-  margin: 60px auto 112px;
+  margin: 60px auto 80px;
   width: 358px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   position: relative;
+  height: 100%;
+}
+
+.sign_form {
+  height: 100%;
 }

@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function SignUp() {
+export default function Register() {
+
   const { email, setEmail } = React.useState("");
   const { password, setPassword } = React.useState("");
 
@@ -19,7 +21,7 @@ export default function SignUp() {
   return (
     <div className="sign">
       <h2 className="heading heading_theme_dark sign__heading">Регистрация</h2>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form sign_form" onSubmit={handleSubmit}>
         <fieldset className="form__fieldset sign__fieldset">
           <input
             className="form__input form__input_type_name form__input_theme_dark"
@@ -49,9 +51,14 @@ export default function SignUp() {
           </button>
         </fieldset>
       </form>
-      <p>
-        Уже зарегистрированы? <span>Войти</span>
-      </p>
+      <div className="sign__subtitle">
+        <p>
+          Уже зарегистрированы?{" "}
+          <span>
+            <Link to="login">Войти</Link>
+          </span>
+        </p>
+      </div>
     </div>
   );
 }
