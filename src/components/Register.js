@@ -1,21 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Register() {
+export default function Register(props) {
 
-  const { email, setEmail } = React.useState("");
-  const { password, setPassword } = React.useState("");
-
-  const handleChangeEmail = (evt) => {
-    setEmail(evt.target.value);
-  };
-
-  const handleChangePassword = (evt) => {
-    setPassword(evt.target.value);
+  const {state, setState} = React.useState({});
+  
+  const handleChange = (evt) => {
+    const {name, value} = evt.target;
+    setState(old => ({
+      ...old, [name]: value
+    }))
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    props.onRegister(state.email, state.password)
+      .catch(err => {
+        console.log(err);
+      })
   };
 
   return (
@@ -25,12 +27,12 @@ export default function Register() {
         <fieldset className="form__fieldset sign__fieldset">
           <input
             className="form__input form__input_type_name form__input_theme_dark"
-            id="email-input"
-            name="email-input"
+            id="email"
+            name="email"
             type="email"
             placeholder="Email"
-            value={email}
-            onChange={handleChangeEmail}
+            value={state.email}
+            onChange={handleChange}
           />
 
           <input
@@ -39,8 +41,8 @@ export default function Register() {
             name="password"
             type="password"
             placeholder="Пароль"
-            value={password}
-            onChange={handleChangePassword}
+            value={state.password}
+            onChange={handleChange}
           />
 
           <button
