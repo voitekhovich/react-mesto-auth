@@ -3,12 +3,13 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 import Cards from './pages/Cards';
 
 import ProtectedRoute from './ProtectedRoute';
-import Login from './Login';
-import Register from './Register';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import * as auth from '../utils/auth';
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
   const history = useHistory();
 
   const handleLogin = (email, password) => {
@@ -28,6 +29,7 @@ export default function App() {
   const handleSignOut = () => {
     localStorage.removeItem('jwt')
     setLoggedIn(false);
+    setUserEmail('');
     history.push('/login');
   }
 
@@ -37,6 +39,7 @@ export default function App() {
     const token = localStorage.getItem('jwt');
     auth.getContent(token).then((data) => {
       setLoggedIn(true);
+      setUserEmail(data.data.email);
     });
   };
 
@@ -61,7 +64,7 @@ export default function App() {
         </Route>
 
         <ProtectedRoute path='/' loggedIn={loggedIn}>
-          <Cards onSignOut={handleSignOut}/>
+          <Cards onSignOut={handleSignOut} userEmail={userEmail}/>
         </ProtectedRoute>
       </Switch>
     </React.Fragment>

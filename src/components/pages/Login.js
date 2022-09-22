@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "./Header";
+import Header from "../Header";
 
 export default function Login(props) {
   const [state, setState] = React.useState({
@@ -32,7 +32,7 @@ export default function Login(props) {
     <React.Fragment>
       <Header>
         <li>
-          <Link className="menu__link" to={"/signup"}>
+          <Link className="menu__link body__button-hover" to={"/signup"}>
             Регистрация
           </Link>
         </li>

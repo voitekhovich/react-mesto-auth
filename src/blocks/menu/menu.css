@@ -5,4 +5,9 @@
   display: flex;
   gap: 24px;
   justify-content: flex-end;
+
+  font-family: "Inter";
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--color_white);
 }
