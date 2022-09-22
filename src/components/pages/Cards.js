@@ -11,8 +11,9 @@ import EditAvatarPopup from '../EditAvatarPopup';
 import AddPlacePopup from '../AddPlacePopup';
 import DelPlacePopup from '../DelPlacePopup';
 import Loader from '../Loader';
+import Header from '../Header';
 
-export default function Cards() {
+export default function Cards(props) {
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -108,6 +109,11 @@ export default function Cards() {
 
   return (
     <React.Fragment>
+      <Header>
+        <li>Регистрация</li>
+        <li><button onClick={props.onSignOut}>Выйти</button></li>
+      </Header>
+
       <CurrentUserContext.Provider value={currentUser}>
 
         {isLoading 
