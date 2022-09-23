@@ -1,10 +1,9 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+const BASE_URL = "https://auth.nomoreparties.co";
 
 const request = ({ url, method = "POST", token, data }) => {
   return fetch(`${BASE_URL}${url}`, {
     method,
     headers: {
-      // Accept: "application/json",
       "Content-Type": "application/json",
       ...(!!token && { Authorization: `Bearer ${token}` }),
     },

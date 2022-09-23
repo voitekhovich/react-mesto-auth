@@ -6,7 +6,6 @@ export default function Login(props) {
   const [state, setState] = React.useState({
     email: "",
     password: "",
-    errorMessage: "",
   });
 
   const handleChange = (evt) => {
@@ -20,11 +19,16 @@ export default function Login(props) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     props.onLogin(state.email, state.password).catch((err) => {
-      console.log(err);
-      setState((old) => ({
-        ...old,
-        errorMessage: err,
-      }));
+      switch (err) {
+        case 400:
+          console.log(`${err} - не передано одно из полей`);
+          break;
+        case 401:
+          console.log(`${err} - пользователь с email не найден`);
+          break;
+        default:
+          console.log(err);
+      }
     });
   };
 

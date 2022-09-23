@@ -9,7 +9,7 @@ import * as auth from '../utils/auth';
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userEmail, setUserEmail] = useState('');
+  const [email, setEmail] = useState('');
   const history = useHistory();
 
   const handleLogin = (email, password) => {
@@ -23,14 +23,14 @@ export default function App() {
   const handleRegister = (email, password) => {
     return auth.register(email, password).then((data) => {
       history.push('/login');
-    });
+    })
   };
 
   const handleSignOut = () => {
     localStorage.removeItem('jwt')
     setLoggedIn(false);
-    setUserEmail('');
-    history.push('/login');
+    setEmail('');
+    history.push('/signin');
   }
 
   const tokenCheck = () => {
@@ -39,8 +39,20 @@ export default function App() {
     const token = localStorage.getItem('jwt');
     auth.getContent(token).then((data) => {
       setLoggedIn(true);
-      setUserEmail(data.data.email);
-    });
+      setEmail(data.data.email);
+    })
+    .catch((err) => {
+      switch (err) {
+        case 400:
+          console.log(`${err} - Токен не передан или передан не в том формате`);
+          break;
+          case 401:
+          console.log(`${err} - Переданный токен некорректен`);
+          break;
+        default:
+          console.log(err);
+      }
+    })
   };
 
   React.useEffect(() => {
@@ -64,7 +76,7 @@ export default function App() {
         </Route>
 
         <ProtectedRoute path='/' loggedIn={loggedIn}>
-          <Cards onSignOut={handleSignOut} userEmail={userEmail}/>
+          <Cards onSignOut={handleSignOut} userEmail={email}/>
         </ProtectedRoute>
       </Switch>
     </React.Fragment>
