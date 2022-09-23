@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import Main from '../Main';
-import Footer from '../Footer';
-import ImagePopup from '../ImagePopup';
+import Main from "../Main";
+import Footer from "../Footer";
+import ImagePopup from "../ImagePopup";
 
-import { api } from '../../utils/Api';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import EditProfilePopup from '../EditProfilePopup';
-import EditAvatarPopup from '../EditAvatarPopup';
-import AddPlacePopup from '../AddPlacePopup';
-import DelPlacePopup from '../DelPlacePopup';
-import Loader from '../Loader';
-import Header from '../Header';
+import { api } from "../../utils/Api";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import EditProfilePopup from "../EditProfilePopup";
+import EditAvatarPopup from "../EditAvatarPopup";
+import AddPlacePopup from "../AddPlacePopup";
+import DelPlacePopup from "../DelPlacePopup";
+import Loader from "../Loader";
+import Header from "../Header";
+import Menu from "../Menu";
 
 export default function Cards(props) {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -110,21 +111,22 @@ export default function Cards(props) {
 
   return (
     <React.Fragment>
-      <Header>
+      <Menu>
         <li>{props.email}</li>
         <li>
           <button
-            className='button menu__button menu__button_type_exit body__button-hover'
+            className="button menu__button menu__button_type_exit body__button-hover"
             onClick={props.onSignOut}
           >
             Выйти
           </button>
         </li>
-      </Header>
+      </Menu>
+      <Header></Header>
 
       <CurrentUserContext.Provider value={currentUser}>
         {isLoading ? (
-          <div className='page__loader'>
+          <div className="page__loader">
             <Loader />
           </div>
         ) : (
