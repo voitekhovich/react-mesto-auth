@@ -1,21 +1,17 @@
 .header {
   position: relative;
-  padding-top: 45px;
-  padding-bottom: 41px;
-  margin: -1px 19px 0;
-  border-bottom: 1px solid rgba(84, 84, 84, .7);
-  border-top: 1px solid rgba(84, 84, 84, .7);
+  margin: 0 19px 0;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 @media screen and (max-width: 767px) {
   .header {
-    padding-top: 28px;
-    padding-bottom: 31px;
-    padding-left: 30px;
-    padding-right: 30px;
     margin-right: 0;
-    margin-left: 0px;
+    margin-left: 0;
+    flex-direction: column-reverse;
+    align-items: flex-start;
   }
 }

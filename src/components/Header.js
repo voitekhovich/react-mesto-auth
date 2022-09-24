@@ -1,18 +1,27 @@
-import React from 'react';
+import React from "react";
 
 export default function Header(props) {
+  const btmBurger = React.useRef();
+  const menu = React.useRef();
 
-  const burgerHandle = () => {
-    const menuElement = document.querySelector('.menu')
-    const btnElement = document.querySelector('.btn-toggle')
-    menuElement.classList.toggle('menu_hidden');
-    btnElement.classList.toggle('active');
-  }
+  const handleBurgerClick = () => {
+    btmBurger.current.classList.toggle("active");
+    menu.current.classList.toggle("active");
+  };
 
   return (
-    <header className='header'>
-      <a href='#' className='header__logo body__button-hover'></a>
-      <div className='btn-toggle' onClick={burgerHandle}></div>
+    <header className="header">
+      <div className="header__container">
+        <a href="#" className="header__logo body__button-hover"></a>
+        <div
+          className="burger-button body__button-hover"
+          ref={btmBurger}
+          onClick={handleBurgerClick}
+        />
+      </div>
+      <nav className="navbar" ref={menu}>
+        <ul className="navbar__list">{props.children}</ul>
+      </nav>
     </header>
   );
 }

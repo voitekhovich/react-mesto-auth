@@ -57,7 +57,7 @@ export default function Register(props) {
     <React.Fragment>
       <Header>
         <li>
-          <Link className="menu__link body__button-hover" to={"/signin"}>
+          <Link className="navbar__link body__button-hover" to={"/signin"}>
             Войти
           </Link>
         </li>

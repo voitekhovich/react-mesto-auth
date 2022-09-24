@@ -12,13 +12,14 @@
 @import url(./blocks/button/button.css);
 
 @import url(./blocks/header/header.css);
+@import url(./blocks/header/__container/header__container.css);
 @import url(./blocks/header/__logo/header__logo.css);
 
-@import url(./blocks/menu/menu.css);
-@import url(./blocks/menu/__item/menu__item.css);
-@import url(./blocks/menu/__link/menu__link.css);
-@import url(./blocks/menu/__button/menu__button.css);
-@import url(./blocks/menu/__button/_type/menu__button_type_exit.css);
+@import url(./blocks/burger-button/burger-button.css);
+@import url(./blocks/navbar/navbar.css);
+@import url(./blocks/navbar/__list/navbar__list.css);
+@import url(./blocks/navbar/__link/navbar__link.css);
+@import url(./blocks/navbar/__button/navbar__button.css);
 
 @import url(./blocks/profile/profile.css);
 @import url(./blocks/profile/__avatar-box/profile__avatar-box.css);

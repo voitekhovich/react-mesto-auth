@@ -36,7 +36,7 @@ export default function Login(props) {
     <React.Fragment>
       <Header>
         <li>
-          <Link className='menu__link body__button-hover' to={'/signup'}>
+          <Link className='navbar__link body__button-hover' to={'/signup'}>
             Регистрация
           </Link>
         </li>

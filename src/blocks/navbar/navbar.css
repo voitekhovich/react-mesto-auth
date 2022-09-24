@@ -1,0 +1,21 @@
+@media screen and (max-width: 767px) {
+  .navbar {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-in;
+
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .navbar.active {
+    max-height: 200px;
+    transition: max-height 0.4s ease-out;
+  }
+}

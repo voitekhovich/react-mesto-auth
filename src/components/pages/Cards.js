@@ -11,8 +11,7 @@ import EditAvatarPopup from "../EditAvatarPopup";
 import AddPlacePopup from "../AddPlacePopup";
 import DelPlacePopup from "../DelPlacePopup";
 import Loader from "../Loader";
-import Header from "../Header";
-import Menu from "../Menu";
+import CardsHeader from "../CardsHeader";
 
 export default function Cards(props) {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -98,6 +97,7 @@ export default function Cards(props) {
   };
 
   useEffect(() => {
+    console.log(`CARDS: ${props.onSignOut}`);
     setIsLoading(true);
     props.onTokenCheck();
     Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -111,18 +111,7 @@ export default function Cards(props) {
 
   return (
     <React.Fragment>
-      <Menu>
-        <li>{props.email}</li>
-        <li>
-          <button
-            className="button menu__button menu__button_type_exit body__button-hover"
-            onClick={props.onSignOut}
-          >
-            Выйти
-          </button>
-        </li>
-      </Menu>
-      <Header></Header>
+      <CardsHeader email={props.email} onClick={props.onSignOut} />
 
       <CurrentUserContext.Provider value={currentUser}>
         {isLoading ? (

@@ -1,0 +1,36 @@
+@media screen and (max-width: 767px) {
+  .burger-button {
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 21px;
+    cursor: pointer;
+  }
+
+  .burger-button::before,
+  .burger-button::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: white;
+    transition: 0.2s ease-in-out;
+  }
+
+  .burger-button::before {
+    transform: translateY(0px);
+    box-shadow: 0 9px #fff;
+  }
+
+  .burger-button::after {
+    transform: translateY(18px);
+  }
+
+  .burger-button.active::before {
+    transform: translateY(9px) rotate(45deg);
+    box-shadow: none;
+  }
+  .burger-button.active::after {
+    transform: translateY(9px) rotate(-45deg);
+  }
+}
