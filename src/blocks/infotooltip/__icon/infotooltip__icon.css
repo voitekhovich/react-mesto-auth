@@ -1,0 +1,12 @@
+.infotooltip__icon {
+  width: 120px;
+  height: 120px;
+}
+
+.infotooltip__icon_ok {
+  background-image: url("../../../images/icons/ok.svg");
+}
+
+.infotooltip__icon_err {
+  background-image: url("../../../images/icons/err.svg");
+}

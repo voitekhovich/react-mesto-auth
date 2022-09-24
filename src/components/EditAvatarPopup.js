@@ -31,6 +31,7 @@ export default function EditAvatarPopup(props) {
     >
       <Input
         name="avatar"
+        type="url"
         values={values}
         errors={errors}
         onChange={handleChange}

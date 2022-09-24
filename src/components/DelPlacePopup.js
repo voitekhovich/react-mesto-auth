@@ -13,9 +13,10 @@ export default function DelPlacePopup(props) {
     <PopupWithForm
       title="Вы уверены?"
       name="del"
-      subTitle={isLoading? 'Удаление...' : 'Да'}
+      subTitle={isLoading ? "Удаление..." : "Да"}
       isOpen={isOpen}
       onClose={onClose}
+      isValid={true}
       onSubmit={handleSubmit}
     />
   );

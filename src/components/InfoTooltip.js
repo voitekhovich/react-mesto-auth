@@ -1,22 +1,15 @@
 import React from "react";
+import Popup from "./Popup";
 
 export default function InfoTooltip(props) {
   const { onClose, message } = props;
 
   return (
-    <div className={`popup popup_visible`}>
-      <div className="popup__container popup_info-tooltip">
-        <button
-          className="button popup__close body__button-hover"
-          type="button"
-          aria-label="Закрыть окно"
-          onClick={onClose}
-        ></button>
-        <div className="info-tooltip_container">
-          <div className={`info-tooltip_icon ${message.icon}`}></div>
-          <p className="info-tooltip_description">{message.title}</p>
-        </div>
+    <Popup isOpen={!!message.icon} name="infotooltip" onClose={onClose}>
+      <div className="infotooltip__container">
+        <div className={`infotooltip__icon ${message.icon}`}></div>
+        <p className="infotooltip__description">{message.title}</p>
       </div>
-    </div>
+    </Popup>
   );
 }

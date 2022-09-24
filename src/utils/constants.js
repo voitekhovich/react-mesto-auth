@@ -41,10 +41,10 @@ export const INFOTOOLTIP_MESSAGE_DEFAULT = {
   title: "",
 };
 export const INFOTOOLTIP_MESSAGE_OK = {
-  icon: "info-tooltip_icon_ok",
+  icon: "infotooltip__icon_ok",
   title: "Вы успешно зарегистрировались!",
 };
 export const INFOTOOLTIP_MESSAGE_ERR = {
-  icon: "info-tooltip_icon_err",
+  icon: "infotooltip__icon_err",
   title: "Что-то пошло не так!\u000AПопробуйте ещё раз.",
 };
