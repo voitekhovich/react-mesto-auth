@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Cards from "./pages/Cards";
 
@@ -8,15 +8,15 @@ import Register from "./pages/Register";
 import * as auth from "../utils/auth";
 
 export default function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [email, setUserEmail] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [email, setEmail] = React.useState("");
   const history = useHistory();
 
   const handleLogin = (email, password) => {
     return auth.authorize(email, password).then((data) => {
       if (!data.token) return Promise.reject("No token");
 
-      setLoggedIn(true);
+      setIsLoggedIn(true);
       localStorage.setItem("jwt", data.token);
     });
   };
@@ -27,8 +27,8 @@ export default function App() {
 
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
-    setLoggedIn(false);
-    setUserEmail("");
+    setIsLoggedIn(false);
+    setEmail("");
     history.push("/signin");
   };
 
@@ -39,8 +39,8 @@ export default function App() {
     auth
       .getContent(token)
       .then((data) => {
-        setLoggedIn(true);
-        setUserEmail(data.data.email);
+        setIsLoggedIn(true);
+        setEmail(data.data.email);
       })
       .catch((err) => {
         switch (err) {
@@ -63,9 +63,9 @@ export default function App() {
   }, []);
 
   React.useEffect(() => {
-    if (!loggedIn) return;
+    if (!isLoggedIn) return;
     history.push("/");
-  }, [loggedIn]);
+  }, [isLoggedIn]);
 
   return (
     <React.Fragment>
@@ -78,7 +78,7 @@ export default function App() {
           <Register onRegister={handleRegister} />
         </Route>
 
-        <ProtectedRoute path="/" loggedIn={loggedIn}>
+        <ProtectedRoute path="/" loggedIn={isLoggedIn}>
           <Cards
             onSignOut={handleSignOut}
             email={email}

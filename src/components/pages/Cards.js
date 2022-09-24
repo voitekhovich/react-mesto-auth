@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import Main from "../Main";
 import Footer from "../Footer";
@@ -14,15 +14,15 @@ import Loader from "../Loader";
 import CardsHeader from "../CardsHeader";
 
 export default function Cards(props) {
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  const [isDelPlacePopupOpen, setIsDelPlacePopupOpen] = useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState({});
-  const [currentUser, setCurrentUser] = useState({});
-  const [cards, setCards] = useState([]);
-  const [selectedDelCard, setSelectedDelCard] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  const [isDelPlacePopupOpen, setIsDelPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({});
+  const [currentUser, setCurrentUser] = React.useState({});
+  const [cards, setCards] = React.useState([]);
+  const [selectedDelCard, setSelectedDelCard] = React.useState({});
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleEditAvatarClick = () => setIsEditAvatarPopupOpen(true);
   const handleEditProfileClick = () => setIsEditProfilePopupOpen(true);
@@ -96,7 +96,7 @@ export default function Cards(props) {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     setIsLoading(true);
     props.onTokenCheck();
     Promise.all([api.getUserInfo(), api.getInitialCards()])

@@ -1,9 +1,10 @@
 export default class FormValidator {
-
   constructor(validationConfig, formElement) {
     this._config = validationConfig;
     this._form = formElement;
-    this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
+    this._inputList = Array.from(
+      this._form.querySelectorAll(this._config.inputSelector)
+    );
   }
 
   _showInputError(inputElement, errorMessage) {
@@ -11,36 +12,37 @@ export default class FormValidator {
     inputElement.classList.add(this._config.inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._config.errorClass);
-  };
-  
+  }
+
   _hideInputError(inputElement) {
     const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._config.inputErrorClass);
     errorElement.classList.remove(this._config.errorClass);
-    errorElement.textContent = '';
-  };
-  
+    errorElement.textContent = "";
+  }
+
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement, inputElement.validationMessage);
     } else {
       this._hideInputError(inputElement);
     }
-  };
+  }
 
   _setEventListeners() {
-    this._buttonElement = this._form.querySelector(this._config.submitButtonSelector);
+    this._buttonElement = this._form.querySelector(
+      this._config.submitButtonSelector
+    );
     this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
-      inputElement.addEventListener('input', () => {
+      inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
         this._toggleButtonState();
       });
     });
-  
-  };
-  
+  }
+
   enableValidation() {
     this._setEventListeners();
   }
@@ -49,7 +51,6 @@ export default class FormValidator {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
-    
   }
 
   _toggleButtonState() {
@@ -61,12 +62,12 @@ export default class FormValidator {
   }
 
   disableSubmitButton() {
-    this._buttonElement.setAttribute('disabled', 'disabled');
+    this._buttonElement.setAttribute("disabled", "disabled");
     this._buttonElement.classList.add(this._config.inactiveButtonClass);
   }
 
   enableSubmitButton() {
-    this._buttonElement.removeAttribute('disabled');
+    this._buttonElement.removeAttribute("disabled");
     this._buttonElement.classList.remove(this._config.inactiveButtonClass);
   }
 
@@ -76,7 +77,5 @@ export default class FormValidator {
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
-
   }
-
 }

@@ -26,7 +26,9 @@ export default function Header(props) {
         />
       </div>
       <nav className="navbar" ref={menu}>
-        <ul className="navbar__list navbar__list_style_burger">{props.children}</ul>
+        <ul className="navbar__list navbar__list_style_burger">
+          {props.children}
+        </ul>
       </nav>
     </header>
   ) : (

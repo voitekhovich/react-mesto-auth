@@ -1,115 +1,63 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import Header from "../Header";
 import InfoTooltip from "../InfoTooltip";
 import {
   INFOTOOLTIP_MESSAGE_DEFAULT,
   INFOTOOLTIP_MESSAGE_OK,
   INFOTOOLTIP_MESSAGE_ERR,
 } from "../../utils/constants";
+import LoginForm from "../LoginForm";
 
 export default function Register(props) {
-  const [state, setState] = React.useState({
-    email: "",
-    password: "",
-  });
-  const [registered, setRegistered] = React.useState(false);
+  const [isRegistered, setIsRegistered] = React.useState(false);
   const [infoTooltipMessage, setInfoTooltipMessage] = React.useState(
     INFOTOOLTIP_MESSAGE_DEFAULT
   );
-  const [message, setMessage] = React.useState('');
   const history = useHistory();
 
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setState((old) => ({
-      ...old,
-      [name]: value,
-    }));
-  };
-  
-  const sendErrorMessage = (mesg) => {
-    setMessage(mesg);
-    console.log(mesg);
-  } 
-
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    props
-      .onRegister(state.email, state.password)
+  const handleSubmit = (email, password) => {
+    return props
+      .onRegister(email, password)
       .then(() => {
-        setRegistered(true);
+        setIsRegistered(true);
         setInfoTooltipMessage(INFOTOOLTIP_MESSAGE_OK);
       })
       .catch((err) => {
+        let errMessage = "";
         switch (err) {
           case 400:
-            sendErrorMessage(`${err} - некорректно заполнено одно из полей`);
+            errMessage = `${err} - некорректно заполнено одно из полей`;
             break;
+
           default:
-            console.log(err);
+            errMessage = err;
         }
-        setRegistered(false);
+        setIsRegistered(false);
         setInfoTooltipMessage(INFOTOOLTIP_MESSAGE_ERR);
+        return Promise.reject(errMessage);
       });
   };
 
   const handleInfoTooltipClose = () => {
     setInfoTooltipMessage(INFOTOOLTIP_MESSAGE_DEFAULT);
-    if (registered) history.push("/login");
+    if (isRegistered) history.push("/login");
   };
 
   return (
-    <React.Fragment>
-      <Header>
-        <li>
-          <Link className="navbar__link body__button-hover" to={"/signin"}>
-            Войти
-          </Link>
-        </li>
-      </Header>
-      <div className="sign">
-        <h2 className="heading sign__heading heading_theme_dark">
-          Регистрация
-        </h2>
-        <form className="form sign_form" onSubmit={handleSubmit}>
-          <fieldset className="form__fieldset sign__fieldset">
-            <input
-              className="form__input form__input_type_name form__input_theme_dark"
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Email"
-              value={state.email || ""}
-              onChange={handleChange}
-            />
-
-            <input
-              className="form__input form__input_type_name form__input_theme_dark"
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Пароль"
-              value={state.password || ""}
-              onChange={handleChange}
-            />
-            <span className='form__input-error sign__input-error'>{message}</span>
-            <button
-              type="submit"
-              className="button form__submit form__submit_theme_dark sign__submit body__button-hover"
-            >
-              Зарегистрироваться
-            </button>
-          </fieldset>
-        </form>
-        <div className="sign__subtitle">
-          <p>
-            Уже зарегистрированы?{" "}
-            <span>
-              <Link to="login">Войти</Link>
-            </span>
-          </p>
-        </div>
+    <LoginForm
+      formTitle="Регистрация"
+      btnSubmitTitle="Зарегистрироваться"
+      headerLinkTo="/signin"
+      headerLinkTitle="Войти"
+      onSubmit={handleSubmit}
+    >
+      <div className="sign__subtitle">
+        <p>
+          Уже зарегистрированы?{" "}
+          <span>
+            <Link to="login">Войти</Link>
+          </span>
+        </p>
       </div>
       {!!infoTooltipMessage.icon && (
         <InfoTooltip
@@ -117,6 +65,6 @@ export default function Register(props) {
           message={infoTooltipMessage}
         />
       )}
-    </React.Fragment>
+    </LoginForm>
   );
 }
