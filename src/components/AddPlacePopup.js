@@ -1,5 +1,5 @@
-import React from "react";
-import PopupWithForm from "./PopupWithForm";
+import React from 'react';
+import PopupWithForm from './PopupWithForm';
 
 export default function AddPlacePopup(props) {
 
@@ -36,19 +36,19 @@ export default function AddPlacePopup(props) {
   }, [isOpen]);
 
   return (
-    <PopupWithForm title="Новое место" name="add" subTitle="Создать" isOpen={isOpen} onClose={onClose}
+    <PopupWithForm title='Новое место' name='add' subTitle='Создать' isOpen={isOpen} onClose={onClose}
                    onSubmit={handleSubmit} validator={validator} setValidator={setValidator}>
-      <label className="form__field">
-        <input className="form__input form__input_type_title" type="text" id="title-input"
-              name="name" placeholder="Название" minLength="2" maxLength="30" required
+      <label className='form__field'>
+        <input className='form__input form__input_type_title' type='text' id='title-input'
+              name='name' placeholder='Название' minLength='2' maxLength='30' required
               value={name || ''} onChange={handleNameChange} />
-        <span className="form__input-error title-input-error"></span>
+        <span className='form__input-error title-input-error'></span>
       </label>
-      <label className="form__field">
-        <input className="form__input form__input_type_link" type="url" id="link-input"
-              name="link" placeholder="Ссылка на картинку" required value={link || ''}
+      <label className='form__field'>
+        <input className='form__input form__input_type_link' type='url' id='link-input'
+              name='link' placeholder='Ссылка на картинку' required value={link || ''}
               onChange={handleLinkChange} />
-        <span className="form__input-error link-input-error"></span>
+        <span className='form__input-error link-input-error'></span>
       </label>
     </PopupWithForm>
   )

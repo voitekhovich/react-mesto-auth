@@ -18,15 +18,15 @@ export default function PopupWithForm( props ) {
   }, [])
 
   return (
-    <div className={`popup popup_${name}${isOpen ? " popup_visible" : ''}`}>
-      <div className="popup__container">
-        <button className="button popup__close body__button-hover" type="button"
-                aria-label="Закрыть окно" onClick={onClose}></button>
-          <h2 className="popup__heading">{title}</h2>
-          <form className="form popup__form" ref={formRef} name={`${name}-form`} onSubmit={onSubmit} noValidate>
-            <fieldset className="form__fieldset">
+    <div className={`popup popup_${name}${isOpen ? ' popup_visible' : ''}`}>
+      <div className='popup__container'>
+        <button className='button popup__close body__button-hover' type='button'
+                aria-label='Закрыть окно' onClick={onClose}></button>
+          <h2 className='heading popup__heading'>{title}</h2>
+          <form className='form popup__form' ref={formRef} name={`${name}-form`} onSubmit={onSubmit} noValidate>
+            <fieldset className='form__fieldset'>
               {children}
-              <button className="button form__submit body__button-hover" type="submit">{subTitle}</button>
+              <button className='button form__submit body__button-hover' type='submit'>{subTitle}</button>
             </fieldset>
           </form>
       </div>

@@ -1,4 +1,12 @@
 .sign__fieldset {
   gap: 30px;
   height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .sign__fieldset {
+    /* margin-left: 30px;
+    margin-right: 30px; */
+  }
 }

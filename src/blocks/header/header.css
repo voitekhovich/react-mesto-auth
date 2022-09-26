@@ -12,7 +12,9 @@
   .header {
     padding-top: 28px;
     padding-bottom: 31px;
+    padding-left: 30px;
+    padding-right: 30px;
     margin-right: 0;
-    margin-left: 0;
+    margin-left: 0px;
   }
 }

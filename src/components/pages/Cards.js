@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import Main from "../Main";
-import Footer from "../Footer";
-import ImagePopup from "../ImagePopup";
+import Main from '../Main';
+import Footer from '../Footer';
+import ImagePopup from '../ImagePopup';
 
-import { api } from "../../utils/Api";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import EditProfilePopup from "../EditProfilePopup";
-import EditAvatarPopup from "../EditAvatarPopup";
-import AddPlacePopup from "../AddPlacePopup";
-import DelPlacePopup from "../DelPlacePopup";
-import Loader from "../Loader";
-import Header from "../Header";
-import InfoTooltip from "../InfoTooltip";
+import { api } from '../../utils/Api';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import EditProfilePopup from '../EditProfilePopup';
+import EditAvatarPopup from '../EditAvatarPopup';
+import AddPlacePopup from '../AddPlacePopup';
+import DelPlacePopup from '../DelPlacePopup';
+import Loader from '../Loader';
+import Header from '../Header';
 
 export default function Cards(props) {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -99,7 +98,7 @@ export default function Cards(props) {
 
   useEffect(() => {
     setIsLoading(true);
-
+    props.onTokenCheck();
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([user, cards]) => {
         setCurrentUser(user);
@@ -112,10 +111,10 @@ export default function Cards(props) {
   return (
     <React.Fragment>
       <Header>
-        <li>{props.userEmail}</li>
+        <li>{props.email}</li>
         <li>
           <button
-            className="button menu__button menu__button_type_exit body__button-hover"
+            className='button menu__button menu__button_type_exit body__button-hover'
             onClick={props.onSignOut}
           >
             Выйти
@@ -125,7 +124,7 @@ export default function Cards(props) {
 
       <CurrentUserContext.Provider value={currentUser}>
         {isLoading ? (
-          <div className="page__loader">
+          <div className='page__loader'>
             <Loader />
           </div>
         ) : (
@@ -164,7 +163,6 @@ export default function Cards(props) {
       <Footer />
 
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-      <InfoTooltip card={selectedCard} onClose={closeAllPopups} />
     </React.Fragment>
   );
 }

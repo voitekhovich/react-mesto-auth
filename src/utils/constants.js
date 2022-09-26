@@ -42,14 +42,14 @@ export const popupList = {
 }
 
 export const INFOTOOLTIP_MESSAGE_DEFAULT = {
-  icon: "",
-  title: "",
+  icon: '',
+  title: '',
 };
 export const INFOTOOLTIP_MESSAGE_OK = {
-  icon: "info-tooltip_icon_ok",
-  title: "Вы успешно зарегистрировались!",
+  icon: 'info-tooltip_icon_ok',
+  title: 'Вы успешно зарегистрировались!',
 };
 export const INFOTOOLTIP_MESSAGE_ERR = {
-  icon: "info-tooltip_icon_err",
-  title: "Что-то пошло не так! Попробуйте ещё раз.",
+  icon: 'info-tooltip_icon_err',
+  title: "Что-то пошло не так!\u000AПопробуйте ещё раз.",
 };

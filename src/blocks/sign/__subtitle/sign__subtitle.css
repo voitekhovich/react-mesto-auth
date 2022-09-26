@@ -13,3 +13,11 @@
   text-decoration: none;
   color: var(--color_white);
 }
+
+@media screen and (max-width: 767px) {
+  .sign__subtitle {
+    margin-top: 20px;
+    margin-bottom: -37px;
+
+  }
+}

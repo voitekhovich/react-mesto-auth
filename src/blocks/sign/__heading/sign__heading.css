@@ -1,3 +1,11 @@
 .sign__heading {
   margin: 0 auto 50px;
 }
+
+@media screen and (max-width: 767px) {
+  .sign__heading {
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 40px;
+  }
+}

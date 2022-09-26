@@ -15,8 +15,8 @@ export default function Card(props) {
   const handleCardDelete =() => onCardDelete(card);
 
   const cardDeleteButtonElement = (
-    isOwner && (<button className="button element__trash body__button-hover" 
-                        type="button" aria-label="Удалить" onClick={handleCardDelete}>
+    isOwner && (<button className='button element__trash body__button-hover' 
+                        type='button' aria-label='Удалить' onClick={handleCardDelete}>
                 </button>)
   );
   const cardLikeButtonClassName = (
@@ -25,13 +25,13 @@ export default function Card(props) {
 
   return (
     <React.Fragment>
-      <img src={card.link} alt={card.name} className="element__image body__button-hover" onClick={handleClick}/>
+      <img src={card.link} alt={card.name} className='element__image body__button-hover' onClick={handleClick}/>
       {cardDeleteButtonElement}
-      <div className="element__container">
-        <h2 className="element__title body__text-nowrap">{card.name}</h2>
-        <div className="element__likes-container">
-          <button className={cardLikeButtonClassName} type="button" aria-label="Нравится" onClick={handleClickLike}></button>
-          <p className="element__likes-count">{card.likes.length}</p>
+      <div className='element__container'>
+        <h2 className='element__title body__text-nowrap'>{card.name}</h2>
+        <div className='element__likes-container'>
+          <button className={cardLikeButtonClassName} type='button' aria-label='Нравится' onClick={handleClickLike}></button>
+          <p className='element__likes-count'>{card.likes.length}</p>
         </div>
       </div>
     </React.Fragment>

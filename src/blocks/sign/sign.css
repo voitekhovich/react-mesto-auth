@@ -1,6 +1,7 @@
 .sign {
   margin: 60px auto 112px;
   width: 358px;
+  max-width: 358px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -10,4 +11,14 @@
 
 .sign_form {
   height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .sign {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 77px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }

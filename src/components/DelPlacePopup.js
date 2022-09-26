@@ -1,5 +1,5 @@
-import React from "react";
-import PopupWithForm from "./PopupWithForm";
+import React from 'react';
+import PopupWithForm from './PopupWithForm';
 
 export default function DelPlacePopup(props) {
 
@@ -12,9 +12,9 @@ export default function DelPlacePopup(props) {
 
   return (
     <PopupWithForm
-      title="Вы уверены?"
-      name="del"
-      subTitle="Да"
+      title='Вы уверены?'
+      name='del'
+      subTitle='Да'
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit} />

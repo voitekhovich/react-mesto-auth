@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Header from "../Header";
 import InfoTooltip from "../InfoTooltip";
 import {
@@ -13,9 +13,11 @@ export default function Register(props) {
     email: "",
     password: "",
   });
+  const [registered, setRegistered] = React.useState(false);
   const [infoTooltipMessage, setInfoTooltipMessage] = React.useState(
     INFOTOOLTIP_MESSAGE_DEFAULT
   );
+  const history = useHistory();
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -27,20 +29,28 @@ export default function Register(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.onRegister(state.email, state.password).catch((err) => {
-      switch (err) {
-        case 400:
-          console.log(`${err} - некорректно заполнено одно из полей`);
-          break;
-        default:
-          console.log(err);
-      }
-      setInfoTooltipMessage(INFOTOOLTIP_MESSAGE_ERR);
-    });
+    props
+      .onRegister(state.email, state.password)
+      .then(() => {
+        setRegistered(true);
+        setInfoTooltipMessage(INFOTOOLTIP_MESSAGE_OK);
+      })
+      .catch((err) => {
+        switch (err) {
+          case 400:
+            console.log(`${err} - некорректно заполнено одно из полей`);
+            break;
+          default:
+            console.log(err);
+        }
+        setRegistered(false);
+        setInfoTooltipMessage(INFOTOOLTIP_MESSAGE_ERR);
+      });
   };
 
   const handleInfoTooltipClose = () => {
     setInfoTooltipMessage(INFOTOOLTIP_MESSAGE_DEFAULT);
+    if (registered) history.push("/login");
   };
 
   return (
@@ -53,7 +63,7 @@ export default function Register(props) {
         </li>
       </Header>
       <div className="sign">
-        <h2 className="heading heading_theme_dark sign__heading">
+        <h2 className="heading sign__heading heading_theme_dark">
           Регистрация
         </h2>
         <form className="form sign_form" onSubmit={handleSubmit}>
