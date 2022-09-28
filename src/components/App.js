@@ -26,7 +26,6 @@ export default function App() {
   };
 
   const handleSignOut = () => {
-    console.log('ВЫПУСТИТЕ!');
     localStorage.removeItem("jwt");
     setLoggedIn(false);
     setUserEmail("");

@@ -7,6 +7,7 @@ export default function Login(props) {
     email: '',
     password: '',
   });
+  const [message, setMessage] = React.useState('');
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -16,15 +17,20 @@ export default function Login(props) {
     }));
   };
 
+  const sendErrorMessage = (mesg) => {
+    setMessage(mesg);
+    console.log(mesg);
+  } 
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     props.onLogin(state.email, state.password).catch((err) => {
       switch (err) {
         case 400:
-          console.log(`${err} - не передано одно из полей`);
+          sendErrorMessage(`${err} - не передано одно из полей`);
           break;
         case 401:
-          console.log(`${err} - пользователь с email не найден`);
+          sendErrorMessage(`${err} - пользователь с email не найден`);
           break;
         default:
           console.log(err);
@@ -64,7 +70,7 @@ export default function Login(props) {
               value={state.password || ''}
               onChange={handleChange}
             />
-
+            <span className='form__input-error sign__input-error'>{message}</span>
             <button
               type='submit'
               className='button form__submit form__submit_theme_dark sign__submit body__button-hover'

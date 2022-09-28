@@ -12,12 +12,15 @@
 @import url(./blocks/button/button.css);
 
 @import url(./blocks/header/header.css);
+@import url(./blocks/header/_style/header_style_burger.css);
 @import url(./blocks/header/__container/header__container.css);
+@import url(./blocks/header/__container/_style/header__container_style_burger.css);
 @import url(./blocks/header/__logo/header__logo.css);
 
 @import url(./blocks/burger-button/burger-button.css);
 @import url(./blocks/navbar/navbar.css);
 @import url(./blocks/navbar/__list/navbar__list.css);
+@import url(./blocks/navbar/__list/_style/navbar__list_style_burger.css);
 @import url(./blocks/navbar/__link/navbar__link.css);
 @import url(./blocks/navbar/__button/navbar__button.css);
 

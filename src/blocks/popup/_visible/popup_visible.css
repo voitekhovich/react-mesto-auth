@@ -1,4 +1,5 @@
 .popup_visible {
   visibility: visible;
   opacity: 1;
+  z-index: 100;
 }

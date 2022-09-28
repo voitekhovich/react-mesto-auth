@@ -17,6 +17,7 @@ export default function Register(props) {
   const [infoTooltipMessage, setInfoTooltipMessage] = React.useState(
     INFOTOOLTIP_MESSAGE_DEFAULT
   );
+  const [message, setMessage] = React.useState('');
   const history = useHistory();
 
   const handleChange = (evt) => {
@@ -26,6 +27,11 @@ export default function Register(props) {
       [name]: value,
     }));
   };
+  
+  const sendErrorMessage = (mesg) => {
+    setMessage(mesg);
+    console.log(mesg);
+  } 
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -38,7 +44,7 @@ export default function Register(props) {
       .catch((err) => {
         switch (err) {
           case 400:
-            console.log(`${err} - некорректно заполнено одно из полей`);
+            sendErrorMessage(`${err} - некорректно заполнено одно из полей`);
             break;
           default:
             console.log(err);
@@ -87,7 +93,7 @@ export default function Register(props) {
               value={state.password || ""}
               onChange={handleChange}
             />
-
+            <span className='form__input-error sign__input-error'>{message}</span>
             <button
               type="submit"
               className="button form__submit form__submit_theme_dark sign__submit body__button-hover"

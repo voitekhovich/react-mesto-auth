@@ -1,0 +1,6 @@
+@media screen and (max-width: 767px) {
+  .header__container_style_burger {
+    border-top: 1px solid rgba(84, 84, 84, 0.7);
+    margin-top: -1px;
+  }
+}

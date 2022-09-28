@@ -97,7 +97,6 @@ export default function Cards(props) {
   };
 
   useEffect(() => {
-    console.log(`CARDS: ${props.onSignOut}`);
     setIsLoading(true);
     props.onTokenCheck();
     Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -111,7 +110,7 @@ export default function Cards(props) {
 
   return (
     <React.Fragment>
-      <CardsHeader email={props.email} onClick={props.onSignOut} />
+      <CardsHeader email={props.email} onSignOut={props.onSignOut} />
 
       <CurrentUserContext.Provider value={currentUser}>
         {isLoading ? (

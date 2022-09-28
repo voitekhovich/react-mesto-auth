@@ -15,10 +15,7 @@
 
 @media screen and (max-width: 767px) {
   .navbar__list {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-    padding: 40px 0;
+    font-size: 14px;
+    line-height: 17px;
   }
 }

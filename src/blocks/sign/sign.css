@@ -13,6 +13,10 @@
   height: 100%;
 }
 
+.sign__input-error {
+  visibility: visible;
+}
+
 @media screen and (max-width: 767px) {
   .sign {
     width: 100%;
