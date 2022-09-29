@@ -1,20 +1,20 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import { useFormAndValidation } from "../hooks/useFormAndValidation";
 
 export default function EditAvatarPopup(props) {
-  const { isOpen, onClose, onUpdateAvatar } = props;
-  const [validator, setValidator] = React.useState({});
-  const avatarInputRef = React.useRef();
+  const { isOpen, onClose, onUpdateAvatar, isLoading } = props;
+  const { values, isValid, errors, handleChange, resetForm } =
+    useFormAndValidation();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onUpdateAvatar(avatarInputRef.current.value);
+    onUpdateAvatar(values["avatar"]);
   };
 
   React.useEffect(() => {
     if (isOpen) {
-      avatarInputRef.current.value = "";
-      validator.resetValidation();
+      resetForm();
     }
   }, [isOpen]);
 
@@ -22,12 +22,11 @@ export default function EditAvatarPopup(props) {
     <PopupWithForm
       title="Обновить аватар"
       name="avatar"
-      subTitle="Сохранить"
+      subTitle={isLoading ? "Сохранение..." : "Сохранить"}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      validator={validator}
-      setValidator={setValidator}
+      isValid={isValid}
     >
       <label className="form__field">
         <input
@@ -36,10 +35,13 @@ export default function EditAvatarPopup(props) {
           id="avatar-input"
           name="avatar"
           placeholder="Ссылка на картинку"
+          value={values["avatar"] || ""}
+          onChange={handleChange}
           required
-          ref={avatarInputRef}
         />
-        <span className="form__input-error avatar-input-error"></span>
+        <span className="form__input-error avatar-input-error">
+          {errors["avatar"]}
+        </span>
       </label>
     </PopupWithForm>
   );

@@ -26,7 +26,7 @@ export default function Card(props) {
   }`;
 
   return (
-    <React.Fragment>
+    <li className="element">
       <img
         src={card.link}
         alt={card.name}
@@ -42,10 +42,10 @@ export default function Card(props) {
             type="button"
             aria-label="Нравится"
             onClick={handleClickLike}
-          ></button>
+          />
           <p className="element__likes-count">{card.likes.length}</p>
         </div>
       </div>
-    </React.Fragment>
+    </li>
   );
 }

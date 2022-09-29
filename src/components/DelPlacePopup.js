@@ -2,7 +2,7 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 export default function DelPlacePopup(props) {
-  const { isOpen, onClose, onDelPlace } = props;
+  const { isOpen, onClose, onDelPlace, isLoading } = props;
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -13,7 +13,7 @@ export default function DelPlacePopup(props) {
     <PopupWithForm
       title="Вы уверены?"
       name="del"
-      subTitle="Да"
+      subTitle={isLoading? 'Удаление...' : 'Да'}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}

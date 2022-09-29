@@ -14,6 +14,18 @@
   opacity: 0.8;
 }
 
+.form__submit:disabled {
+  background-color: var(--color_white);
+  color: var(--color_black);
+  border: 1px solid var(--color_black);
+  opacity: 0.2;
+}
+
+.form__submit:disabled:hover {
+  opacity: 0.2;
+  cursor: default;
+}
+
 @media screen and (max-width: 767px) {
   .form__submit {
     margin-top: 14px;

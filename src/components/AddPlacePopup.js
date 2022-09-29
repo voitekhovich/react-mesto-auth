@@ -1,34 +1,23 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import { useFormAndValidation } from "../hooks/useFormAndValidation";
 
 export default function AddPlacePopup(props) {
-  const { isOpen, onClose, onAddPlace } = props;
+  const { isOpen, onClose, onAddPlace, isLoading } = props;
 
-  const [name, setName] = React.useState("");
-  const [link, setLink] = React.useState("");
-  const [validator, setValidator] = React.useState({});
-
-  function handleNameChange(evt) {
-    setName(evt.target.value);
-  }
-
-  function handleLinkChange(evt) {
-    setLink(evt.target.value);
-  }
+  const {values, isValid, errors, handleChange, resetForm} = useFormAndValidation();
 
   function handleSubmit(evt) {
     evt.preventDefault();
     onAddPlace({
-      name,
-      link,
+      name: values['name'],
+      link: values['link'],
     });
   }
 
   React.useEffect(() => {
     if (isOpen) {
-      setName("");
-      setLink("");
-      validator.resetValidation();
+      resetForm();
     }
   }, [isOpen]);
 
@@ -36,12 +25,11 @@ export default function AddPlacePopup(props) {
     <PopupWithForm
       title="Новое место"
       name="add"
-      subTitle="Создать"
+      subTitle={isLoading? 'Сохранение...' : 'Создать'}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      validator={validator}
-      setValidator={setValidator}
+      isValid={isValid}
     >
       <label className="form__field">
         <input
@@ -53,10 +41,10 @@ export default function AddPlacePopup(props) {
           minLength="2"
           maxLength="30"
           required
-          value={name || ""}
-          onChange={handleNameChange}
+          value={values['name'] || ""}
+          onChange={handleChange}
         />
-        <span className="form__input-error title-input-error"></span>
+        <span className="form__input-error title-input-error">{errors['name']}</span>
       </label>
       <label className="form__field">
         <input
@@ -66,10 +54,10 @@ export default function AddPlacePopup(props) {
           name="link"
           placeholder="Ссылка на картинку"
           required
-          value={link || ""}
-          onChange={handleLinkChange}
+          value={values['link'] || ""}
+          onChange={handleChange}
         />
-        <span className="form__input-error link-input-error"></span>
+        <span className="form__input-error link-input-error">{errors['link']}</span>
       </label>
     </PopupWithForm>
   );

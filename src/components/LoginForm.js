@@ -1,26 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "../hooks/useForm";
 import Header from "./Header";
 import Loader from "./Loader";
 
 export default function LoginForm(props) {
-  const [state, setState] = React.useState({
-    email: "",
-    password: "",
-  });
-  const [message, setMessage] = React.useState("");
-  const [isLoading, setIsLoading] = React.useState(false);
 
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setState((old) => ({
-      ...old,
-      [name]: value,
-    }));
-  };
+  const [error, setError] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+  const {values, handleChange } = useForm({});
 
   const sendErrorMessage = (mesg) => {
-    setMessage(mesg);
+    setError(mesg);
     console.log(mesg);
   };
 
@@ -28,7 +19,7 @@ export default function LoginForm(props) {
     evt.preventDefault();
     setIsLoading(true);
     props
-      .onSubmit(state.email, state.password)
+      .onSubmit(values['email'], values['password'])
       .catch((err) => {
         sendErrorMessage(err);
       })
@@ -57,7 +48,7 @@ export default function LoginForm(props) {
               name="email"
               type="email"
               placeholder="Email"
-              value={state.email || ""}
+              value={values['email'] || ""}
               onChange={handleChange}
             />
 
@@ -67,11 +58,11 @@ export default function LoginForm(props) {
               name="password"
               type="password"
               placeholder="Пароль"
-              value={state.password || ""}
+              value={values['password'] || ""}
               onChange={handleChange}
             />
             <span className="form__input-error sign__input-error">
-              {message}
+              {error}
             </span>
             {isLoading && (
               <div className="page__loader">

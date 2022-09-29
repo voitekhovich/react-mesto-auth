@@ -20,7 +20,11 @@ export default function Main(props) {
     <main>
       <section className="profile">
         <div className="profile__avatar-box">
-          <img src={currentUser.avatar} alt="" className="profile__avatar" />
+          <img
+            src={currentUser.avatar}
+            alt="Аватар пользователя"
+            className="profile__avatar"
+          />
           <div
             className="profile__avatar-edit body__button-hover"
             onClick={onEditAvatar}
@@ -52,14 +56,13 @@ export default function Main(props) {
       <section aria-label="Блок с карточками">
         <ul className="elements">
           {cards.map((card) => (
-            <li className="element" key={card._id}>
-              <Card
-                card={card}
-                onCardClick={onCardClick}
-                onCardLike={onCardLike}
-                onCardDelete={onCardDelete}
-              />
-            </li>
+            <Card
+              key={card._id}
+              card={card}
+              onCardClick={onCardClick}
+              onCardLike={onCardLike}
+              onCardDelete={onCardDelete}
+            />
           ))}
         </ul>
       </section>

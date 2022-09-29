@@ -1,5 +1,5 @@
 .form__input-error {
-  visibility: hidden;
+  /* visibility: hidden; */
   color: var(--color_error);
   margin-top: 6px;
   font-weight: 400;
