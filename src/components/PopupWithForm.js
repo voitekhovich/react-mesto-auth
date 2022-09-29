@@ -1,4 +1,5 @@
 import React from "react";
+import Form from "./Form";
 import Popup from "./Popup";
 
 export default function PopupWithForm(props) {
@@ -12,29 +13,18 @@ export default function PopupWithForm(props) {
     onSubmit,
     isValid,
   } = props;
-  const formRef = React.useRef();
 
   return (
     <Popup isOpen={isOpen} name={name} onClose={onClose}>
-      <h2 className="heading popup__heading">{title}</h2>
-      <form
-        className="form popup__form"
-        ref={formRef}
-        name={`${name}-form`}
+      <Form
+        title={title}
+        name={name}
+        isValid={isValid}
+        subTitle={subTitle}
         onSubmit={onSubmit}
-        noValidate
       >
-        <fieldset className="form__fieldset">
-          {children}
-          <button
-            className="button form__submit body__button-hover"
-            type="submit"
-            disabled={!isValid}
-          >
-            {subTitle}
-          </button>
-        </fieldset>
-      </form>
+        {children}
+      </Form>
     </Popup>
   );
 }

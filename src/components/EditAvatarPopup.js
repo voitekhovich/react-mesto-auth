@@ -1,6 +1,7 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 import { useFormAndValidation } from "../hooks/useFormAndValidation";
+import Input from "./Input";
 
 export default function EditAvatarPopup(props) {
   const { isOpen, onClose, onUpdateAvatar, isLoading } = props;
@@ -28,21 +29,15 @@ export default function EditAvatarPopup(props) {
       onSubmit={handleSubmit}
       isValid={isValid}
     >
-      <label className="form__field">
-        <input
-          className="form__input form__input_type_link"
-          type="url"
-          id="avatar-input"
-          name="avatar"
-          placeholder="Ссылка на картинку"
-          value={values["avatar"] || ""}
-          onChange={handleChange}
-          required
-        />
-        <span className="form__input-error avatar-input-error">
-          {errors["avatar"]}
-        </span>
-      </label>
+      <Input
+        name="avatar"
+        values={values}
+        errors={errors}
+        onChange={handleChange}
+        placeholder="Ссылка на картинку"
+        minLength="2"
+        maxLength="200"
+      />
     </PopupWithForm>
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useFormAndValidation } from "../hooks/useFormAndValidation";
+import Input from "./Input";
 
 export default function EditProfilePopup(props) {
   const { isOpen, onClose, onUpdateUser, isLoading } = props;
@@ -37,40 +38,46 @@ export default function EditProfilePopup(props) {
       onSubmit={handleSubmit}
       isValid={isValid}
     >
-      <label className="form__field">
-        <input
-          className="form__input form__input_type_name"
-          type="text"
-          id="name-input"
-          name="name"
-          placeholder="Имя"
-          minLength="2"
-          maxLength="40"
-          required
-          value={values["name"] || ""}
-          onChange={handleChange}
-        />
-        <span className="form__input-error name-input-error">
-          {errors["name"]}
-        </span>
-      </label>
-      <label className="form__field">
-        <input
-          className="form__input form__input_type_about"
-          type="text"
-          id="about-input"
-          name="about"
-          placeholder="О себе"
-          minLength="2"
-          maxLength="200"
-          required
-          value={values["about"] || ""}
-          onChange={handleChange}
-        />
-        <span className="form__input-error about-input-error">
-          {errors["about"]}
-        </span>
-      </label>
+      <Input
+        name="name"
+        values={values}
+        errors={errors}
+        onChange={handleChange}
+        placeholder="Имя"
+        minLength="2"
+        maxLength="40"
+      />
+
+      <Input
+        name="about"
+        values={values}
+        errors={errors}
+        onChange={handleChange}
+        placeholder="О себе"
+        minLength="2"
+        maxLength="200"
+        required
+      />
+      
+      {/* <Input
+        name="name"
+        values={values["name"] || ""}
+        errors={errors["name"]}
+        handleChange={handleChange}
+        placeholder="Имя"
+        minLength="2"
+        maxLength="40"
+      />
+
+      <Input
+        name="about"
+        values={values["about"] || ""}
+        errors={errors["about"]}
+        handleChange={handleChange}
+        placeholder="О себе"
+        minLength="2"
+        maxLength="200"
+      /> */}
     </PopupWithForm>
   );
 }
