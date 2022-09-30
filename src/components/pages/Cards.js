@@ -29,12 +29,6 @@ export default function Cards(props) {
   const [selectedDelCard, setSelectedDelCard] = React.useState({});
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const isOpen =
-    isEditAvatarPopupOpen ||
-    isEditProfilePopupOpen ||
-    isAddPlacePopupOpen ||
-    selectedCard.link;
-
   const handleEditAvatarClick = () => setIsEditAvatarPopupOpen(true);
   const handleEditProfileClick = () => setIsEditProfilePopupOpen(true);
   const handleAddPlaceClick = () => setIsAddPlacePopupOpen(true);
@@ -118,20 +112,6 @@ export default function Cards(props) {
       .catch((err) => console.log(err))
       .finally(() => setIsLoading(false));
   };
-
-  React.useEffect(() => {
-    function closeByEscape(evt) {
-      if (evt.key === "Escape") {
-        closeAllPopups();
-      }
-    }
-    if (isOpen) {
-      document.addEventListener("keydown", closeByEscape);
-      return () => {
-        document.removeEventListener("keydown", closeByEscape);
-      };
-    }
-  }, [isOpen]);
 
   React.useEffect(() => {
     setIsLoading(true);

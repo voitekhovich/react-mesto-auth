@@ -84,20 +84,6 @@ export default function App() {
   };
 
   React.useEffect(() => {
-    function closeByEscape(evt) {
-      if (evt.key === "Escape") {
-        handleInfoTooltipClose();
-      }
-    }
-    if (!!infoTooltipMessage.icon) {
-      document.addEventListener("keydown", closeByEscape);
-      return () => {
-        document.removeEventListener("keydown", closeByEscape);
-      };
-    }
-  }, [infoTooltipMessage.icon]);
-
-  React.useEffect(() => {
     tokenCheck();
   }, []);
 
